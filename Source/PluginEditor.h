@@ -35,7 +35,7 @@
 //==============================================================================
 /**
 */
-class SimpleSideAudioProcessorEditor  : public AudioProcessorEditor
+class SimpleSideAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
     SimpleSideAudioProcessor& processor;
     CurveView mainView;
@@ -44,10 +44,10 @@ class SimpleSideAudioProcessorEditor  : public AudioProcessorEditor
     juce::Image background;
     juce::Image playhead;
     
-    class redrawTimer : public Timer
+    class redrawTimer : public juce::Timer
     {
     public:
-        redrawTimer(AudioProcessorEditor* e)
+        redrawTimer(juce::AudioProcessorEditor* e)
         {
             this->editor = e;
         }
@@ -70,14 +70,14 @@ class SimpleSideAudioProcessorEditor  : public AudioProcessorEditor
                 ((SimpleSideAudioProcessorEditor*)editor)->rateReadout.setValue(((SimpleSideAudioProcessorEditor*)editor)->processor.rateValue);
         }
     private:
-        AudioProcessorEditor* editor;
+        juce::AudioProcessorEditor* editor;
     };
 public:
     SimpleSideAudioProcessorEditor (SimpleSideAudioProcessor&);
     ~SimpleSideAudioProcessorEditor();
 
     //==============================================================================
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
 
 private:

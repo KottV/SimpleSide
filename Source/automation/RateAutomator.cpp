@@ -29,7 +29,7 @@
 #include "RateAutomator.h"
 #include "../PluginProcessor.h"
 
-RateAutomator::RateAutomator(AudioProcessor* p) {
+RateAutomator::RateAutomator(juce::AudioProcessor* p) {
     processor = p;
 }
 

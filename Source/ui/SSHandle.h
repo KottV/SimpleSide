@@ -34,7 +34,7 @@
 //==============================================================================
 /*
 */
-class SSHandle    : public Component
+class SSHandle    : public juce::Component
 {
 public:
     static float baseSize;
@@ -46,19 +46,19 @@ public:
     SSHandle(void*, float, float);
     ~SSHandle();
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
     
     void handleClick();         // Only call if we're already sure mouse event happened inside
     void center();              // Use to determine if an event is inside center+radius of baseSize
     void refreshParent();       // use to request a draw refresh from the parent CurveView
     
-    void mouseEnter(const MouseEvent &event) override;
-    void mouseExit(const MouseEvent &event) override;
-    void mouseMove(const MouseEvent &event) override;
-    void mouseDown(const MouseEvent &event) override;
-    void mouseUp(const MouseEvent &event) override;
-    void mouseDrag(const MouseEvent &event) override;
+    void mouseEnter(const juce::MouseEvent &event) override;
+    void mouseExit(const juce::MouseEvent &event) override;
+    void mouseMove(const juce::MouseEvent &event) override;
+    void mouseDown(const juce::MouseEvent &event) override;
+    void mouseUp(const juce::MouseEvent &event) override;
+    void mouseDrag(const juce::MouseEvent &event) override;
     
     
 private:
@@ -67,14 +67,14 @@ private:
     float currSize;             // current draw size, with anim considered (getCurrTime(), abs difference)
     float animProg;             // progress of our animation, from 0 to 1 and back
     int ansz;                   // size of animated circle handle, so we can "bounce"
-    Point<int> originalPos;   // used as an anchor for various movement tasks
+    juce::Point<int> originalPos;   // used as an anchor for various movement tasks
     
     MouseListener mouse;
     
     void* parent;
     
     
-    class AnimRedrawTimer : public Timer
+    class AnimRedrawTimer : public juce::Timer
     {
     private:
         SSHandle* p;

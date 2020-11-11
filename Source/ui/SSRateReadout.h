@@ -34,18 +34,18 @@
 //==============================================================================
 /*
 */
-class SSRateReadout    : public Slider
+class SSRateReadout    : public juce::Slider
 {
 public:
     SSRateReadout();
     SSRateReadout(double);
     ~SSRateReadout();
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
 
 private:
-    Image frames;
+    juce::Image frames;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SSRateReadout)
 };
 

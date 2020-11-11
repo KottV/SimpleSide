@@ -34,13 +34,13 @@
 //==============================================================================
 /*
 */
-class VintageKnob    : public Component
+class VintageKnob    : public juce::Component
 {
 public:
     VintageKnob();
     ~VintageKnob();
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
 
 private:

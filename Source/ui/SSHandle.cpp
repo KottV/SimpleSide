@@ -67,7 +67,7 @@ SSHandle::~SSHandle()
 {
 }
 
-void SSHandle::paint (Graphics& g)
+void SSHandle::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -79,7 +79,7 @@ void SSHandle::paint (Graphics& g)
     //g.setColour (Colours::grey);
     //g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (Colours::whitesmoke);
+    g.setColour (juce::Colours::whitesmoke);
     if (isMouseOverOrDragging()) {
         g.fillEllipse(getWidth()/2 - indicatorSize/3, getHeight()/2 - indicatorSize/3, indicatorSize*2/3, indicatorSize*2/3);
         if (animProg < 1.0f) {
@@ -116,8 +116,8 @@ void SSHandle::mouseDown(const juce::MouseEvent &event) {
     }
     else if (event.mods.isLeftButtonDown()) {
         setAlpha(0.5f);
-        setMouseCursor(MouseCursor::NoCursor);
-        Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(true, false);
+        setMouseCursor(juce::MouseCursor::NoCursor);
+        juce::Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(true, false);
         refreshParent();
     }
 }
@@ -130,9 +130,9 @@ void SSHandle::mouseUp(const juce::MouseEvent &event) {
     }
     else if (event.mods.isLeftButtonDown()) {
         setAlpha(1.0f);
-        setMouseCursor(MouseCursor::NormalCursor);
-        Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(false, false);
-        Desktop::getInstance().getMainMouseSource().setScreenPosition(Point<float>(getScreenX()+baseSize/2, getScreenY()+baseSize/2));
+        setMouseCursor(juce::MouseCursor::NormalCursor);
+        juce::Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(false, false);
+        juce::Desktop::getInstance().getMainMouseSource().setScreenPosition(juce::Point<float>(getScreenX()+baseSize/2, getScreenY()+baseSize/2));
         originalPos = getPosition();
         refreshParent();
     }
@@ -154,7 +154,7 @@ void SSHandle::mouseDrag(const juce::MouseEvent &event) {
             else if (newY < 0 - baseSize/2)
                     newY = 0 - baseSize/2;
             setBounds(newX, newY, baseSize, baseSize);
-            ((SSMultiCurve*)parent)->setNewPos(i, Point<float>((newX+baseSize/2)/(float)CurveView::VIEW_WIDTH, 1-(newY+baseSize/2)/(float)CurveView::VIEW_HEIGHT));
+            ((SSMultiCurve*)parent)->setNewPos(i, juce::Point<float>((newX+baseSize/2)/(float)CurveView::VIEW_WIDTH, 1-(newY+baseSize/2)/(float)CurveView::VIEW_HEIGHT));
             
         } else {
             int newX = originalPos.x + event.getDistanceFromDragStartX();
@@ -175,7 +175,7 @@ void SSHandle::mouseDrag(const juce::MouseEvent &event) {
                 }
             }
             setBounds(newX, newY, baseSize, baseSize);
-            ((SSMultiCurve*)parent)->setNewPos(i, Point<float>((newX+baseSize/2)/(float)CurveView::VIEW_WIDTH, 1-(newY+baseSize/2)/(float)CurveView::VIEW_HEIGHT));
+            ((SSMultiCurve*)parent)->setNewPos(i, juce::Point<float>((newX+baseSize/2)/(float)CurveView::VIEW_WIDTH, 1-(newY+baseSize/2)/(float)CurveView::VIEW_HEIGHT));
         }
         refreshParent();
     }

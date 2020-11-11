@@ -32,12 +32,12 @@
 //==============================================================================
 SimpleSideAudioProcessor::SimpleSideAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
+     : juce::AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::stereo(), true)
+                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
                       #endif
-                       .withOutput ("Output", AudioChannelSet::stereo(), true)
+                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
                        )
 #endif
@@ -53,7 +53,7 @@ SimpleSideAudioProcessor::~SimpleSideAudioProcessor()
 }
 
 //==============================================================================
-const String SimpleSideAudioProcessor::getName() const
+const juce::String SimpleSideAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
@@ -101,12 +101,12 @@ void SimpleSideAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const String SimpleSideAudioProcessor::getProgramName (int index)
+const juce::String SimpleSideAudioProcessor::getProgramName (int index)
 {
-    return String("Default");
+    return juce::String("Default");
 }
 
-void SimpleSideAudioProcessor::changeProgramName (int index, const String& newName)
+void SimpleSideAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
@@ -144,8 +144,8 @@ bool SimpleSideAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
   #else
     // This is the place where you check if the layout is supported.
     // In this template code we only support mono or stereo.
-    if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
+     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
 
     // This checks if the input layout matches the output layout
@@ -159,7 +159,7 @@ bool SimpleSideAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 }
 #endif
 
-void SimpleSideAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void SimpleSideAudioProcessor::processBlock (juce::AudioSampleBuffer& buffer, juce::MidiBuffer& midiMessages)
 {
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
@@ -210,13 +210,13 @@ bool SimpleSideAudioProcessor::hasEditor() const
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* SimpleSideAudioProcessor::createEditor()
+juce::AudioProcessorEditor* SimpleSideAudioProcessor::createEditor()
 {
     return new SimpleSideAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void SimpleSideAudioProcessor::getStateInformation (MemoryBlock& destData)
+void SimpleSideAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     // Store parameters
     // add size of mix and rate parameters
@@ -259,7 +259,7 @@ void SimpleSideAudioProcessor::setStateInformation (const void* data, int sizeIn
     std::memcpy(tempData+2, (unsigned char*)data+offset, sizeof(float));
     offset += sizeof(float);
     //primaryCurve.clearCurve();
-    primaryCurve.setNewPos(0, Point<float>(tempData[0], tempData[1])); // note, tempData[0] should always be 0.0f here!
+    primaryCurve.setNewPos(0, juce::Point<float>(tempData[0], tempData[1])); // note, tempData[0] should always be 0.0f here!
     primaryCurve.setPow(0, tempData[2]);
     primaryCurve.handles[0]->setBounds((int)(1-SSHandle::baseSize/2), (int)((1-tempData[1])*CurveView::VIEW_HEIGHT-SSHandle::baseSize/2), SSHandle::baseSize, SSHandle::baseSize);
     int i = 1;
@@ -278,7 +278,7 @@ void SimpleSideAudioProcessor::setStateInformation (const void* data, int sizeIn
 
 //==============================================================================
 // This creates new instances of the plugin..
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new SimpleSideAudioProcessor();
 }

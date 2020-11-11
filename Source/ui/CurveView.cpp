@@ -49,7 +49,7 @@ CurveView::CurveView(SSMultiCurve* c) {
         addAndMakeVisible(curves->handles[i]);
     highlightRegion = -1;
     
-    playhead = ImageCache::getFromMemory(BinaryData::Playhead_png, BinaryData::Playhead_pngSize);
+    playhead = juce::ImageCache::getFromMemory(BinaryData::Playhead_png, BinaryData::Playhead_pngSize);
 }
 
 CurveView::~CurveView()
@@ -60,7 +60,7 @@ void CurveView::addHandle(SSHandle* h) {
     addAndMakeVisible(h);
 }
 
-void CurveView::paint (Graphics& g)
+void CurveView::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -70,15 +70,15 @@ void CurveView::paint (Graphics& g)
     */
 
     if (isMouseButtonDown())
-        g.setColour(Colour(0.5f, 0.2f, 0.3f, 0.35f));
+        g.setColour(juce::Colour(0.5f, 0.2f, 0.3f, 0.35f));
     else
-        g.setColour (Colour(0.5f, 0.5f, 0.5f, 0.5f));
+        g.setColour (juce::Colour(0.5f, 0.5f, 0.5f, 0.5f));
     if (highlightRegion >= 0) {
         g.fillRect((int)(curves->handleStart(highlightRegion)->getX()*CV_WIDTH), 0, (int)((curves->curveEnd(highlightRegion)->getX()-curves->handleStart(highlightRegion)->getX())*CV_WIDTH), CV_HEIGHT);
     }
     
     // draw curve
-    g.setColour (Colours::white);
+    g.setColour (juce::Colours::white);
     for (float i = 2.0/CV_WIDTH; i <= 1.0; i+=1.0/CV_WIDTH) {
         g.drawLine(CV_WIDTH*(i-1.0/CV_WIDTH), CV_HEIGHT*(1-curves->at(i-1.0/CV_WIDTH)), CV_WIDTH*i, CV_HEIGHT*(1-curves->at(i)), 2.0f);
     }
@@ -114,8 +114,8 @@ void CurveView::mouseDown(const juce::MouseEvent &event) {
         origPow = curves->getPow(highlightRegion);
         mouseLocSnap.x = event.getMouseDownScreenPosition().x;
         mouseLocSnap.y = event.getMouseDownScreenPosition().y;
-        setMouseCursor(MouseCursor::NoCursor);
-        Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(true, false);
+        setMouseCursor(juce::MouseCursor::NoCursor);
+        juce::Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(true, false);
     }
 }
 
@@ -132,9 +132,9 @@ void CurveView::mouseDrag(const juce::MouseEvent &event) {
 
 void CurveView::mouseUp(const juce::MouseEvent &event) {
     if (event.mods.isLeftButtonDown() && highlightRegion != -1){
-        Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(false, false);
-        Desktop::getInstance().getMainMouseSource().setScreenPosition(mouseLocSnap);
-        setMouseCursor(MouseCursor::NormalCursor);
+        juce::Desktop::getInstance().getMainMouseSource().enableUnboundedMouseMovement(false, false);
+        juce::Desktop::getInstance().getMainMouseSource().setScreenPosition(mouseLocSnap);
+        setMouseCursor(juce::MouseCursor::NormalCursor);
     }
 }
 

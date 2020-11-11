@@ -41,7 +41,7 @@ VintageKnob::~VintageKnob()
 {
 }
 
-void VintageKnob::paint (Graphics& g)
+void VintageKnob::paint (juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -50,15 +50,15 @@ void VintageKnob::paint (Graphics& g)
        drawing code..
     */
 
-    g.fillAll (Colours::white);   // clear the background
+    g.fillAll (juce::Colours::white);   // clear the background
 
-    g.setColour (Colours::grey);
+    g.setColour (juce::Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (Colours::lightblue);
+    g.setColour (juce::Colours::lightblue);
     g.setFont (14.0f);
     g.drawText ("VintageKnob", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+                juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void VintageKnob::resized()

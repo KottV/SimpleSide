@@ -34,7 +34,7 @@ SSMixKnob::SSMixKnob()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    frames = ImageCache::getFromMemory(BinaryData::MixKnobFilmstrip_png, BinaryData::MixKnobFilmstrip_pngSize);
+    frames = juce::ImageCache::getFromMemory(BinaryData::MixKnobFilmstrip_png, BinaryData::MixKnobFilmstrip_pngSize);
     setBounds(627, 206, 156, 156);
     setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     setRange(0.0, 1.0, 0.0);
@@ -45,7 +45,7 @@ SSMixKnob::SSMixKnob(double initialValue)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    frames = ImageCache::getFromMemory(BinaryData::MixKnobFilmstrip_png, BinaryData::MixKnobFilmstrip_pngSize);
+    frames = juce::ImageCache::getFromMemory(BinaryData::MixKnobFilmstrip_png, BinaryData::MixKnobFilmstrip_pngSize);
     setBounds(627, 206, 156, 156);
     setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     setRange(0.0, 1.0, 0.0);
@@ -56,7 +56,7 @@ SSMixKnob::~SSMixKnob()
 {
 }
 
-void SSMixKnob::paint (Graphics& g)
+void SSMixKnob::paint (juce::Graphics& g)
 {
     g.drawImageAt(frames, 0, (int)(-1.0*getValue()*255)*156);
 }

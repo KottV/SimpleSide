@@ -32,19 +32,19 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include <string>
 
-class RateAutomator : public AudioProcessorParameter
+class RateAutomator : public juce::AudioProcessorParameter
 {
 public:
-    RateAutomator(AudioProcessor* p);
+    RateAutomator(juce::AudioProcessor* p);
     float getValue() const override;
     void setValue(float newValue) override;
     
     float getDefaultValue() const override { return 0.3f; }
-    String getName(int maximumStringLength) const override { return "Rate"; }
-    String getLabel() const override { return ""; }
-    float getValueForText(const String& text) const override { return std::stof(text.toStdString(), nullptr); }
+    juce::String getName(int maximumStringLength) const override { return "Rate"; }
+    juce::String getLabel() const override { return ""; }
+    float getValueForText(const juce::String& text) const override { return std::stof(text.toStdString(), nullptr); }
 private:
-    AudioProcessor* processor;
+    juce::AudioProcessor* processor;
 };
 
 

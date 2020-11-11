@@ -34,7 +34,7 @@ SimpleSideAudioProcessorEditor::SimpleSideAudioProcessorEditor (SimpleSideAudioP
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (800, 500);
-    background = ImageCache::getFromMemory(BinaryData::background_png, BinaryData::background_pngSize);
+    background = juce::ImageCache::getFromMemory(BinaryData::background_png, BinaryData::background_pngSize);
     addAndMakeVisible(&mainView);
     addAndMakeVisible(&mixKnob);
     addAndMakeVisible(&rateReadout);
@@ -48,7 +48,7 @@ SimpleSideAudioProcessorEditor::~SimpleSideAudioProcessorEditor()
 }
 
 //==============================================================================
-void SimpleSideAudioProcessorEditor::paint (Graphics& g)
+void SimpleSideAudioProcessorEditor::paint (juce::Graphics& g)
 {
     g.drawImageAt(background, 0, 0);
     // debugging stuff

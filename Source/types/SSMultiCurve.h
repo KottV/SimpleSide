@@ -39,7 +39,7 @@ class SSMultiCurve {
     
 public:
     std::deque <SSHandle*> handles;         // VARIOIUS DRAWABLE HANDLES, have no purpose other than directing mouse input and drawing
-    Component* parent;                      // Pointer to parent
+    juce::Component* parent;                      // Pointer to parent
     float liveViewTime;
     
     SSMultiCurve();
@@ -48,15 +48,15 @@ public:
     double at(float);                       // returns y for a given x
     double smoothedAt(float);
     int curveAt(float);                     // returns index of curve for a given x
-    const Point<float>* handleStart(int);   // returns beginning point of curve i
-    const Point<float>* curveEnd(int);      // returns beginning point of curve i
+    const juce::Point<float>* handleStart(int);   // returns beginning point of curve i
+    const juce::Point<float>* curveEnd(int);      // returns beginning point of curve i
     void splitAt(float, float, float=0.0f);     // splits at x and y of 0.0 to 1.0
     void rawSplitAt(float, float, float=0.0f);  // splits at x and y of 0.0 to 1.0
-    void setParent(Component*);             // sets parent object for updating visual components
+    void setParent(juce::Component*);             // sets parent object for updating visual components
     void ensureWrap();                      // ensures the last point wraps around to first point to prevent clicking
     void remove(SSHandle*);                 // attempts to remove curve matching the passed handle
     int getIndex(SSHandle*);                // gets index from a handle reference
-    void setNewPos(int, Point<float>);      // sets new position of curve beginning
+    void setNewPos(int, juce::Point<float>);      // sets new position of curve beginning
     float getPow(int);                      // returns power of curve at index i
     void setPow(int, float);                // sets power of index i to pow
     void rawSetPow(int, float);             // sets power of index i to pow, ONLY USE FOR LOADING CURVES, DOESN'T SANITY CHECK/ADJUST!!!

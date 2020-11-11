@@ -37,7 +37,7 @@
 //==============================================================================
 /*
 */
-class CurveView    : public Component
+class CurveView    : public juce::Component
 {
 protected:
 public:
@@ -47,7 +47,7 @@ public:
     static const int &VIEW_HEIGHT;
     static const int &VIEW_WIDTH;
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
     
     void addHandle(SSHandle*);
@@ -57,16 +57,16 @@ private:
     SSMultiCurve* curves;
     int highlightRegion;
     float origPow;
-    Point<float> mouseLocSnap;
+    juce::Point<float> mouseLocSnap;
     juce::Image playhead;
     
     
-    void mouseEnter(const MouseEvent &event) override;
-    void mouseExit(const MouseEvent &event) override;
-    void mouseMove(const MouseEvent &event) override;
-    void mouseDown(const MouseEvent &event) override;
-    void mouseDrag(const MouseEvent &event) override;
-    void mouseUp(const MouseEvent &event) override;
+    void mouseEnter(const juce::MouseEvent &event) override;
+    void mouseExit(const juce::MouseEvent &event) override;
+    void mouseMove(const juce::MouseEvent &event) override;
+    void mouseDown(const juce::MouseEvent &event) override;
+    void mouseDrag(const juce::MouseEvent &event) override;
+    void mouseUp(const juce::MouseEvent &event) override;
     
     static int CV_HEIGHT;             // view height, adjustable
     static int CV_WIDTH;              // view width,  adjustable

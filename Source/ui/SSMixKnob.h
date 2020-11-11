@@ -34,18 +34,18 @@
 //==============================================================================
 /*
 */
-class SSMixKnob    : public Slider
+class SSMixKnob    : public juce::Slider
 {
 public:
     SSMixKnob();
     SSMixKnob(double);
     ~SSMixKnob();
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
 
 private:
-    Image frames;
+    juce::Image frames;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SSMixKnob)
 };
 

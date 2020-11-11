@@ -34,7 +34,7 @@ SSRateReadout::SSRateReadout()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    frames = ImageCache::getFromMemory(BinaryData::ReadoutFilmstrip_png, BinaryData::ReadoutFilmstrip_pngSize);
+    frames = juce::ImageCache::getFromMemory(BinaryData::ReadoutFilmstrip_png, BinaryData::ReadoutFilmstrip_pngSize);
     setBounds(636, 72, 141, 67);
     setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     setRange(-3.0, 6.0, 1.0);
@@ -45,7 +45,7 @@ SSRateReadout::SSRateReadout(double initialValue)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    frames = ImageCache::getFromMemory(BinaryData::ReadoutFilmstrip_png, BinaryData::ReadoutFilmstrip_pngSize);
+    frames = juce::ImageCache::getFromMemory(BinaryData::ReadoutFilmstrip_png, BinaryData::ReadoutFilmstrip_pngSize);
     setBounds(636, 72, 141, 67);
     setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     setRange(-3.0, 6.0, 1.0);
@@ -56,7 +56,7 @@ SSRateReadout::~SSRateReadout()
 {
 }
 
-void SSRateReadout::paint (Graphics& g)
+void SSRateReadout::paint (juce::Graphics& g)
 {
     g.drawImageAt(frames, 0, (-1.0*(-getValue()+6.0))*67);
 }

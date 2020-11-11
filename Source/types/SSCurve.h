@@ -33,19 +33,19 @@
 
 class SSCurve {
 private:
-    Point<float> entry;
-    Point<float> exit;
+    juce::Point<float> entry;
+    juce::Point<float> exit;
     float pwr;
     float rawExp;
 public:
     SSCurve();
-    SSCurve(Point<float>, Point<float>, float);
-    SSCurve* splitAt(Point<float>, float = 0.0f);
-    SSCurve* rawSplitAt(Point<float>, float = 0.0f); // use for loading curves
+    SSCurve(juce::Point<float>, juce::Point<float>, float);
+    SSCurve* splitAt(juce::Point<float>, float = 0.0f);
+    SSCurve* rawSplitAt(juce::Point<float>, float = 0.0f); // use for loading curves
     double getY(double);
     bool isInRange(float);
-    Point<float>* getEntry();
-    Point<float>* getExit();
+    juce::Point<float>* getEntry();
+    juce::Point<float>* getExit();
     void setExitY(float);
     void setEntryY(float);
     float getPow();

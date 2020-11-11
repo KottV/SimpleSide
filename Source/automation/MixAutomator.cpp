@@ -29,7 +29,7 @@
 #include "MixAutomator.h"
 #include "../PluginProcessor.h"
 
-MixAutomator::MixAutomator(AudioProcessor* p) {
+MixAutomator::MixAutomator(juce::AudioProcessor* p) {
     processor = p;
 }
 

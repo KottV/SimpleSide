@@ -36,7 +36,7 @@ SSCurve::SSCurve() {
     setPow(rawExp);
 }
 
-SSCurve::SSCurve(Point<float> begin, Point<float> end, float pwr) {
+SSCurve::SSCurve(juce::Point<float> begin, juce::Point<float> end, float pwr) {
     entry.setX(begin.getX());
     entry.setY(begin.getY());
     exit.setX(end.getX());
@@ -65,24 +65,24 @@ bool SSCurve::isInRange(float x) {
 }
 
 
-SSCurve* SSCurve::splitAt(Point<float> loc, float newPwr) {
+SSCurve* SSCurve::splitAt(juce::Point<float> loc, float newPwr) {
     SSCurve* nc = new SSCurve(loc, exit, newPwr);
     exit.setX(loc.getX());
     setExitY(loc.getY());
     return nc;
 }
 
-SSCurve* SSCurve::rawSplitAt(Point<float> loc, float newPwr) {
+SSCurve* SSCurve::rawSplitAt(juce::Point<float> loc, float newPwr) {
     SSCurve* nc = new SSCurve(loc, exit, newPwr);
     exit.setX(loc.getX());
     exit.setY(loc.getY());
     return nc;
 }
 
-Point<float>* SSCurve::getEntry() {
+juce::Point<float>* SSCurve::getEntry() {
     return &entry;
 }
-Point<float>* SSCurve::getExit() {
+juce::Point<float>* SSCurve::getExit() {
     return &exit;
 }
 void SSCurve::setExitY(float y) {

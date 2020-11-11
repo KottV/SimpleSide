@@ -44,10 +44,10 @@ SSMultiCurve::~SSMultiCurve() {
     }
 }
 
-const Point<float>* SSMultiCurve::handleStart(int i) {
+const juce::Point<float>* SSMultiCurve::handleStart(int i) {
     return curves[i]->getEntry();
 }
-const Point<float>* SSMultiCurve::curveEnd(int i) {
+const juce::Point<float>* SSMultiCurve::curveEnd(int i) {
     return curves[i]->getExit();
 }
 
@@ -86,7 +86,7 @@ void SSMultiCurve::splitAt(float x, float y, float newCurvePwr) {
         i++;
     }
     i++;
-    curves.insert(ic+1, (*ic)->splitAt(Point<float>(x, y), newCurvePwr));
+    curves.insert(ic+1, (*ic)->splitAt(juce::Point<float>(x, y), newCurvePwr));
     handles.insert(ih+1, new SSHandle(this, curves[i]->getEntry()->x, curves[i]->getEntry()->y));
     if (parent != NULL) {
         ((CurveView*)parent)->addHandle(handles[i]);
@@ -104,7 +104,7 @@ void SSMultiCurve::rawSplitAt(float x, float y, float newCurvePwr) {
         i++;
     }
     i++;
-    curves.insert(ic+1, (*ic)->rawSplitAt(Point<float>(x, y), newCurvePwr));
+    curves.insert(ic+1, (*ic)->rawSplitAt(juce::Point<float>(x, y), newCurvePwr));
     handles.insert(ih+1, new SSHandle(this, curves[i]->getEntry()->x, curves[i]->getEntry()->y));
     if (parent != NULL) {
         ((CurveView*)parent)->addHandle(handles[i]);
@@ -154,7 +154,7 @@ int SSMultiCurve::getIndex(SSHandle *h) {
     return i;
 }
 
-void SSMultiCurve::setNewPos(int i, Point<float> newPos) {
+void SSMultiCurve::setNewPos(int i, juce::Point<float> newPos) {
     if (i != 0) {
         curves[i]->setEntryY(newPos.y); // use to update curve direction
         *(curves[i]->getEntry()) = newPos;
