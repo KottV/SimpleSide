@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="Fl3Rfl" name="SimpleSide" projectType="audioplug" useAppConfig="1"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" version="1.0.0"
+              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" pluginName="SimpleSide" pluginDesc="SimpleSide"
+              pluginManufacturer="Armando Montanez" pluginManufacturerCode="Manu"
+              pluginCode="Fl3r" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="0"
+              pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="SimpleSideAU" pluginRTASCategory="" bundleIdentifier="com.yourcompany.SimpleSide"
+              aaxIdentifier="com.yourcompany.SimpleSide" pluginAAXCategory="2"
+              includeBinaryInAppConfig="1" pluginFormats="buildVST,buildVST3"
+              displaySplashScreen="1" pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0"
+              pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0">
+  <MAINGROUP id="nVXBhi" name="SimpleSide">
+    <GROUP id="{03B67BA6-5470-0FD3-06E0-15865DD1FC48}" name="ui">
+      <FILE id="gYUQWo" name="CurveView.cpp" compile="1" resource="0" file="Source/ui/CurveView.cpp"/>
+      <FILE id="bj6LRW" name="CurveView.h" compile="0" resource="0" file="Source/ui/CurveView.h"/>
+      <FILE id="ygQR9n" name="SSHandle.cpp" compile="1" resource="0" file="Source/ui/SSHandle.cpp"/>
+      <FILE id="U4KA3R" name="SSHandle.h" compile="0" resource="0" file="Source/ui/SSHandle.h"/>
+      <FILE id="NhLg3r" name="SSMixKnob.cpp" compile="1" resource="0" file="Source/ui/SSMixKnob.cpp"/>
+      <FILE id="I090Ha" name="SSMixKnob.h" compile="0" resource="0" file="Source/ui/SSMixKnob.h"/>
+      <FILE id="Kbei9Z" name="SSRateReadout.cpp" compile="1" resource="0"
+            file="Source/ui/SSRateReadout.cpp"/>
+      <FILE id="n8jIjX" name="SSRateReadout.h" compile="0" resource="0" file="Source/ui/SSRateReadout.h"/>
+      <FILE id="jG3xg7" name="VintageKnob.cpp" compile="1" resource="0" file="Source/ui/VintageKnob.cpp"/>
+      <FILE id="gpIpG0" name="VintageKnob.h" compile="0" resource="0" file="Source/ui/VintageKnob.h"/>
+    </GROUP>
+    <GROUP id="{2EF4F90C-F283-BA17-0A94-FC2E134B210B}" name="types">
+      <FILE id="koNhfT" name="SSCurve.cpp" compile="1" resource="0" file="Source/types/SSCurve.cpp"/>
+      <FILE id="xq2urJ" name="SSCurve.h" compile="0" resource="0" file="Source/types/SSCurve.h"/>
+      <FILE id="COS3o3" name="SSMultiCurve.cpp" compile="1" resource="0"
+            file="Source/types/SSMultiCurve.cpp"/>
+      <FILE id="ri58Gg" name="SSMultiCurve.h" compile="0" resource="0" file="Source/types/SSMultiCurve.h"/>
+    </GROUP>
+    <GROUP id="{96E8215B-1D74-012D-EF99-FF30ED6180FC}" name="images">
+      <FILE id="Pac6u0" name="background.png" compile="0" resource="1" file="Source/images/background.png"/>
+      <FILE id="yVB5Dd" name="MixKnobFilmstrip.png" compile="0" resource="1"
+            file="Source/images/MixKnobFilmstrip.png"/>
+      <FILE id="WyjjTy" name="Playhead.png" compile="0" resource="1" file="Source/images/Playhead.png"/>
+      <FILE id="bqtSSW" name="ReadoutFilmstrip.png" compile="0" resource="1"
+            file="Source/images/ReadoutFilmstrip.png"/>
+    </GROUP>
+    <GROUP id="{294759FD-6ED3-1730-4F13-8F4D04B5F12A}" name="automation">
+      <FILE id="AIhmRU" name="MixAutomator.cpp" compile="1" resource="0"
+            file="Source/automation/MixAutomator.cpp"/>
+      <FILE id="mCIBbR" name="MixAutomator.h" compile="0" resource="0" file="Source/automation/MixAutomator.h"/>
+      <FILE id="d2BSQJ" name="RateAutomator.cpp" compile="1" resource="0"
+            file="Source/automation/RateAutomator.cpp"/>
+      <FILE id="nLwNUU" name="RateAutomator.h" compile="0" resource="0" file="Source/automation/RateAutomator.h"/>
+    </GROUP>
+    <GROUP id="{63BB6136-3BA8-21F9-EA53-E9D0691A0931}" name="Source">
+      <FILE id="E8luTZ" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="vdonUz" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="eq8ew4" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="VPIkl2" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_WEB_BROWSER="0" JUCE_USE_CURL="0" JUCE_JACK="1"/>
+  <EXPORTFORMATS>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-fvisibility=hidden -Wl,--strip-all">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="SimpleSide"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="SimpleSide" optimisation="3"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_core" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_events" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_graphics" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/home/kv/src/audio/JUCE6/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/home/kv/src/audio/JUCE6/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="0" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <LINUX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
